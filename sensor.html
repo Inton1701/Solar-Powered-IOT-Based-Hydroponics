@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <button id="theme-toggle" class="btn ">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+
+    <div class="container-fluid py-4">
+        <h1 class="text-center mb-4 floating-icon">Sensor Management</h1>
+
+        <!-- Sensor Limits Configuration -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-sliders-h me-1"></i> Sensor Limits
+                            <div class="ms-auto">
+                                <i class="fas fa-info-circle ms-2" title="Limit Settings Help"></i>
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <!-- pH Limits -->
+                            <div class="col-12">
+                                <div class="sensor-limit-card">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6><i class="fas fa-flask me-2 icon-animate"></i>pH Levels</h6>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center gap-2">
+                                            <span>Notify</span>
+                                            <div class="form-check form-switch custom-switch">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="5.5"
+                                                    step="0.1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Minimum</small>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="6.5"
+                                                    step="0.1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Maximum</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EC Limits -->
+                            <div class="col-12">
+                                <div class="sensor-limit-card">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6><i class="fas fa-bolt icon-animate me-2"></i>Electronic Conductivity
+                                            </h6>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center gap-2">
+                                            <span>Notify</span>
+                                            <div class="form-check form-switch custom-switch">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="1.2"
+                                                    step="0.1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Minimum</small>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="2.0"
+                                                    step="0.1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Maximum</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Water Level Limits -->
+                            <div class="col-12">
+                                <div class="sensor-limit-card">
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6><i class="fas fa-water icon-animate me-2"></i>Water Level</h6>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center gap-2">
+                                            <span>Notify</span>
+                                            <div class="form-check form-switch custom-switch">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="30"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Minimum</small>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="100"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Maximum</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                            <!-- Temperature Limits -->
+                            <div class="col-12">
+                                <div class="sensor-limit-card">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6><i class="fas fa-temperature-high icon-animate me-2"></i>Air Temperature
+                                            </h6>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center gap-2">
+                                            <span>Notify</span>
+                                            <div class="form-check form-switch custom-switch">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="30"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Minimum</small>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="100"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Maximum</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Humidity Limits -->
+                            <div class="col-12">
+                                <div class="sensor-limit-card">
+
+                                        
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h6><i class="fas fa-tint icon-animate me-2"></i>Humidity</h6>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center gap-2">
+                                                <span>Notify</span>
+                                                <div class="form-check form-switch custom-switch">
+                                                    <input class="form-check-input" type="checkbox" checked>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="30"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Minimum</small>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <button class="btn btn-control minus-btn">-</button>
+                                                <input type="number" class="form-control text-center" value="100"
+                                                    step="1">
+                                                <button class="btn btn-control plus-btn">+</button>
+                                            </div>
+                                            <small class="text-muted">Maximum</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Rules -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-robot me-1"></i> Automation Rules
+                            <div class="ms-auto">
+                                <i class="fas fa-plus-circle ms-2" title="Add New Rule"></i>
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Automation Rule Card -->
+                        <div class="sensor-limit-card mb-3">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-12 col-md-4">
+                                    <label for="trigger-select" class="form-label">Trigger</label>
+                                    <select id="trigger-select" class="form-select text-muted">
+                                        <option class="trigger-option">pH Level</option>
+                                        <option>EC Level</option>
+                                        <option>Water Level</option>
+                                        <option>Temperature</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-md-2">
+                                    <label for="condition-select" class="form-label">Condition</label>
+                                    <select id="condition-select" class="form-select">
+                                        <option>&lt;</option>
+                                        <option>&gt;</option>
+                                        <option>=</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <label for="value-input" class="form-label">Value</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-control minus-btn">-</button>
+                                        <input id="value-input" type="number" class="form-control text-center"
+                                            value="30" step="1">
+                                        <button class="btn btn-control plus-btn">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <label for="duration-input" class="form-label">Duration</label>
+                                    <div class="input-group">
+                                        <input id="hours-input" type="number" class="form-control text-center"
+                                            placeholder="H" min="0">
+                                        <input id="minutes-input" type="number" class="form-control text-center"
+                                            placeholder="M" min="0" max="59">
+                                        <input id="seconds-input" type="number" class="form-control text-center"
+                                            placeholder="S" min="0" max="59">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2 align-items-center">
+                                <div class="col-8">
+                                    <label for="action-select" class="form-label">Action</label>
+                                    <select id="action-select" class="form-select">
+                                        <option>Trigger pH Up Pump</option>
+                                        <option>Trigger pH Down Pump</option>
+                                        <option>Activate Water Pump</option>
+                                        <option>Start Aerator</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label for="on-off-switch" class="form-label">State</label>
+                                    <div class="form-check form-switch custom-switch">
+                                        <input id="on-off-switch" class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">On/Off</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Rules List -->
+                        <div class="sensor-limit-card mb-3">
+                            <div class="active-rules mt-4">
+                                <h6><i class="fas fa-list-ul me-2"></i>Active Rules</h6>
+                                <div class="list-group">
+                                    <div class="list-group-item d-flex justify-content-between rounded-1 align-items-center my-2">
+                                        <span>If pH &lt; 5.5 → Trigger pH Up Pump for 10s</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                            <i class="fas fa-trash text-danger" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between rounded-1  align-items-center ">
+                                        <span>If Water Level &lt; 30% → Activate Water Pump for 20s</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                            <i class="fas fa-trash text-danger" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between rounded-1  align-items-center my-2">
+                                        <span>If Temperature &gt; 28°C → Start Aerator for 15s</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                            <i class="fas fa-trash text-danger" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const themeToggle = document.getElementById("theme-toggle");
+                const themeIcon = themeToggle.querySelector("i");
+
+                function applyTheme(isDark) {
+                    if (isDark) {
+                        document.body.classList.add("dark-mode");
+                        themeIcon.classList.remove("fa-moon");
+                        themeIcon.classList.add("fa-sun");
+                    } else {
+                        document.body.classList.remove("dark-mode");
+                        themeIcon.classList.remove("fa-sun");
+                        themeIcon.classList.add("fa-moon");
+                    }
+                }
+
+                // Load theme preference
+                const isDarkMode = localStorage.getItem("darkMode") === "true";
+                applyTheme(isDarkMode);
+
+                themeToggle.addEventListener("click", function () {
+                    const isDark = !document.body.classList.contains("dark-mode");
+                    localStorage.setItem("darkMode", isDark);
+                    applyTheme(isDark);
+                });
+            });
+        </script>
+</body>
+
+</html>

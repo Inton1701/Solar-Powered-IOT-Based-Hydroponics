@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .btn-check + .btn {
+            border-color: #8DB600;
+            border-color: #8DB600;
+            color: #8DB600;
+        }
+
+        .btn-check:checked + .btn {
+            background-color: #8DB600!important;
+            color: white;
+        }
+        .btn-check + .btn:hover {
+            color: #8DB600;
+            border-color: #8DB600!important;
+        }
+
+        
+        .custom-time-input {
+            display: flex;
+            gap: 5px;
+        }
+
+        .custom-time-input input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .form-check-input:checked {
+        background-color: #8DB600;
+        border-color: #8DB600;
+    }
+
+    .form-check-input:focus {
+        border-color: #8DB600;
+        box-shadow: 0 0 0 0.25rem rgba(141, 182, 0, 0.25);
+    }
+
+    .form-switch .form-check-input {
+        width: 2.5em;
+        height: 1.25em;
+        margin-right: 10px;
+    }
+
+    .switch-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="theme-toggle" class="btn btn-outline-secondary">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+    <div class="container-fluid py-4">
+        <h1 class="text-center mb-4 floating-icon">Schedule Management</h1>
+        <div class="row">
+            <!-- pH Up Pump Schedule -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-1"></i> pH Up Pump Schedule
+                            <div class="ms-auto">
+                               
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                              <div class="switch-container">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ph-up-switch">
+                            </div>
+                        </div>
+                  
+                        <div class="sensor-limit-card mb-3">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <label for="ph-up-interval" class="form-label">Interval</label>
+                                    <div class="custom-time-input">
+                                        <input id="ph-up-interval-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="ph-up-interval-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="ph-up-interval-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="ph-up-duration" class="form-label">Duration</label>
+                                    <div class="custom-time-input">
+                                        <input id="ph-up-duration-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="ph-up-duration-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="ph-up-duration-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2 align-items-center">
+                                <div class="col-12">
+                                    <label class="form-label">Days:</label><br>
+                                    <div class="btn-group" role="group" aria-label="Days">
+                                        <input type="checkbox" class="btn-check" id="ph-up-monday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-monday">Mon</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-tuesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-tuesday">Tue</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-wednesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-wednesday">Wed</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-thursday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-thursday">Thu</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-friday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-friday">Fri</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-saturday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-saturday">Sat</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-up-sunday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-up-sunday">Sun</label>
+
+                                      
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn btn-sm" style="background-color: #8DB600; color: white;" type="button">
+                                            <i class="fas fa-power-off"></i> Activate
+                                        </button>
+                                    </div>
+                                    
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water Pump Schedule -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-1"></i> Water Pump Schedule
+                            <div class="ms-auto">
+                               
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                              <div class="switch-container">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ph-up-switch">
+                            </div>
+                        </div>
+                        <div class="sensor-limit-card mb-3">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <label for="water-interval" class="form-label">Interval</label>
+                                    <div class="custom-time-input">
+                                        <input id="water-interval-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="water-interval-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="water-interval-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="water-duration" class="form-label">Duration</label>
+                                    <div class="custom-time-input">
+                                        <input id="water-duration-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="water-duration-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="water-duration-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2 align-items-center">
+                                <div class="col-12">
+                                    <label class="form-label">Days:</label><br>
+                                    <div class="btn-group" role="group" aria-label="Days">
+                                        <input type="checkbox" class="btn-check" id="water-monday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-monday">Mon</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-tuesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-tuesday">Tue</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-wednesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-wednesday">Wed</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-thursday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-thursday">Thu</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-friday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-friday">Fri</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-saturday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-saturday">Sat</label>
+
+                                        <input type="checkbox" class="btn-check" id="water-sunday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="water-sunday">Sun</label>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn btn-sm" style="background-color: #8DB600; color: white;" type="button">
+                                            <i class="fas fa-power-off"></i> Activate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aerator Schedule -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-1"></i> Aerator Schedule
+                            <div class="ms-auto">
+                               
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                              <div class="switch-container">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ph-up-switch">
+                            </div>
+                        </div>
+                        <div class="sensor-limit-card mb-3">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <label for="aerator-interval" class="form-label">Interval</label>
+                                    <div class="custom-time-input">
+                                        <input id="aerator-interval-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="aerator-interval-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="aerator-interval-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="aerator-duration" class="form-label">Duration</label>
+                                    <div class="custom-time-input">
+                                        <input id="aerator-duration-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="aerator-duration-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="aerator-duration-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2 align-items-center">
+                                <div class="col-12">
+                                    <label class="form-label">Days:</label><br>
+                                    <div class="btn-group" role="group" aria-label="Days">
+                                        <input type="checkbox" class="btn-check" id="aerator-monday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-monday">Mon</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-tuesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-tuesday">Tue</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-wednesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-wednesday">Wed</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-thursday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-thursday">Thu</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-friday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-friday">Fri</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-saturday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-saturday">Sat</label>
+
+                                        <input type="checkbox" class="btn-check" id="aerator-sunday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="aerator-sunday">Sun</label>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn btn-sm" style="background-color: #8DB600; color: white;" type="button">
+                                            <i class="fas fa-power-off"></i> Activate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- pH Down Pump Schedule -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-1"></i> pH Down Pump Schedule
+                            <div class="ms-auto">
+                               
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                              <div class="switch-container">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="ph-up-switch">
+                            </div>
+                        </div>
+                        <div class="sensor-limit-card mb-3">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-6">
+                                    <label for="ph-down-interval" class="form-label">Interval</label>
+                                    <div class="custom-time-input">
+                                        <input id="ph-down-interval-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="ph-down-interval-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="ph-down-interval-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="ph-down-duration" class="form-label">Duration</label>
+                                    <div class="custom-time-input">
+                                        <input id="ph-down-duration-hours form-control" type="number" min="0" max="23" placeholder="HH">
+                                        <span>:</span>
+                                        <input id="ph-down-duration-minutes form-control" type="number" min="0" max="59" placeholder="MM">
+                                        <span>:</span>
+                                        <input id="ph-down-duration-seconds form-control" type="number" min="0" max="59" placeholder="SS">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2 align-items-center">
+                                <div class="col-12">
+                                    <label class="form-label">Days:</label><br>
+                                    <div class="btn-group" role="group" aria-label="Days">
+                                        <input type="checkbox" class="btn-check" id="ph-down-monday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-monday">Mon</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-tuesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-tuesday">Tue</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-wednesday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-wednesday">Wed</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-thursday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-thursday">Thu</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-friday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-friday">Fri</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-saturday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-saturday">Sat</label>
+
+                                        <input type="checkbox" class="btn-check" id="ph-down-sunday" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="ph-down-sunday">Sun</label>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button class="btn btn-sm" style="background-color: #8DB600; color: white;" type="button">
+                                            <i class="fas fa-power-off"></i> Activate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const themeToggle = document.getElementById("theme-toggle");
+            const themeIcon = themeToggle.querySelector("i");
+
+            function applyTheme(isDark) {
+                if (isDark) {
+                    document.body.classList.add("dark-mode");
+                    themeIcon.classList.remove("fa-moon");
+                    themeIcon.classList.add("fa-sun");
+                } else {
+                    document.body.classList.remove("dark-mode");
+                    themeIcon.classList.remove("fa-sun");
+                    themeIcon.classList.add("fa-moon");
+                }
+            }
+
+            // Load theme preference
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+            applyTheme(isDarkMode);
+
+            themeToggle.addEventListener("click", function () {
+                const isDark = !document.body.classList.contains("dark-mode");
+                localStorage.setItem("darkMode", isDark);
+                applyTheme(isDark);
+            });
+        });
+    </script>
+</body>
+
+</html>

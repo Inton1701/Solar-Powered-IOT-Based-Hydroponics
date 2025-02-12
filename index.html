@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <button id="theme-toggle" class="btn btn-outline-secondary">
+    <i id="theme-icon" class="fas fa-moon"></i>
+</button>
+  <div class="container-fluid py-4">
+    <h1 class="text-center mb-4 floating-icon">Dashboard</h1>
+    <div class="row">
+      <!-- Sensors -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-microchip icon-animate me-1"></i> Sensor Readings
+            <div class="ms-auto">
+              <i class="fas fa-info-circle ms-2" title="Sensor Information"></i>
+              <i class="fas fa-cog ms-2" title="Manage Sensors"></i>
+            </div>
+          </h5>
+          </div>
+          <div class="card-body">
+            <div class="row ms-5">
+              <div class="col-6 mb-4">
+                <h6><i class="fas fa-bolt icon-animate"></i> EC</h6>
+                <span id="ec-value" class="sensor-value">1.5</span>
+                <span class="sensor-unit">ppm</span>
+                <span class="sensor-status" id="ec-status"></span>
+              </div>
+              <div class="col-6 mb-3">
+                <h6><i class="fas fa-water icon-animate"></i> Water Level</h6>
+                <span id="water-level-value" class="sensor-value">75</span>
+                <span class="sensor-unit">%</span>
+                <span class="sensor-status" id="water-level-status"></span>
+              </div>
+              <div class="col-6 mb-3">
+                <h6><i class="fas fa-thermometer-half icon-animate"></i> Water Temp</h6>
+                <span id="water-temp-value" class="sensor-value">22</span>
+                <span class="sensor-unit">°C</span>
+                <span class="sensor-status" id="water-temp-status"></span>
+              </div>
+              <div class="col-6 mb-3">
+                <h6><i class="fas fa-flask icon-animate"></i> pH</h6>
+                <span id="ph-value" class="sensor-value">6.5</span>
+                <span class="sensor-unit">pH</span>
+
+                <span class="sensor-status" id="ph-status"></span>
+              </div>
+              <div class="col-6 mb-3">
+                <h6><i class="fas fa-temperature-high icon-animate"></i> Air Temp</h6>
+                <span id="air-temp-value" class="sensor-value">25</span>
+                <span class="sensor-unit">°C</span>
+                <span class="sensor-status" id="air-temp-status"></span>
+              </div>
+              <div class="col-6 mb-3">
+                <h6><i class="fas fa-tint icon-animate"></i> Humidity</h6>
+                <span id="humidity-value" class="sensor-value">60</span>
+                <span class="sensor-unit">%</span>
+                <span class="sensor-status" id="humidity-status"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actuators -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-cogs icon-animate me-1"></i> Actuator Controls       <div class="ms-auto">
+              <i class="fas fa-info-circle ms-2" title="Actuators Information"></i>
+              <i class="fas fa-cog ms-2" title="Manage Actuators"></i>
+            </div>
+          </h5>
+          </div>
+          <div class="card-body">
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input " type="checkbox" id="ph-up-pump">
+                <label class="form-check-label" for="ph-up-pump">
+                  <i class="fas fa-up-long icon-animate"></i>
+                  <span>pH Up Pump</span>
+                  <span class="actuator-status ac-status-idle">Idle</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input" type="checkbox" id="ph-down-pump">
+                <label class="form-check-label" for="ph-down-pump">
+                  <i class="fas fa-down-long icon-animate"></i>
+                  <span>pH Down Pump</span>
+                  <span class="actuator-status ac-status-running">running</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input" type="checkbox" id="fertilizer-a-pump">
+                <label class="form-check-label" for="fertilizer-a-pump">
+                  <i class="fas fa-flask icon-animate" style="color: #726bff;"></i>
+                  <span>Fertilizer A Pump</span>
+                  <span class="actuator-status ac-status-off">off</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input" type="checkbox" id="fertilizer-b-pump">
+                <label class="form-check-label" for="fertilizer-b-pump">
+                  <i class="fas fa-flask icon-animate" style="color: #ff6b6b;"></i>
+                  <span>Fertilizer B Pump</span>
+                  <span class="actuator-status ac-status-off">off</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input" type="checkbox" id="aerator">
+                <label class="form-check-label" for="aerator">
+                  <i class="fas fa-wind icon-animate"></i>
+                  <span>Aerator</span>
+                  <span class="actuator-status ac-status-error">error</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+            <div class="actuator-card">
+              <div class="form-check form-switch custom-switch">
+                <input class="form-check-input" type="checkbox" id="water-pump">
+                <label class="form-check-label" for="water-pump">
+                  <i class="fas fa-water icon-animate"></i>
+                  <span>Water Pump</span>
+                  <span class="actuator-status ac-status-running">running</span>
+                  <span class="status-indicator status-idle"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+      <div class="col-md-6 mb-4 chart-container">
+        <div class="card h-100">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-microchip icon-animate me-1"></i> pH & EC Reading Patterns
+              <div class="ms-auto">
+                <i class="fas fa-info-circle ms-2" title="Sensor Information"></i>
+                <i class="fas fa-cog ms-2" title="Manage Sensors"></i>
+              </div>
+            </h5>
+          </div>
+          <div class="card-body">
+            <canvas id="ph-ec-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 chart-container">
+        <div class="card h-100">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-microchip icon-animate me-1"></i> Environmental Data
+              <div class="ms-auto">
+                <i class="fas fa-info-circle ms-2" title="Sensor Information"></i>
+                <i class="fas fa-cog ms-2" title="Manage Sensors"></i>
+              </div>
+            </h5>
+          </div>
+          <div class="card-body">
+            <canvas id="temp-humidity-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plant Status -->
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-microchip icon-animate me-1"></i> Growth Calendar
+              <div class="ms-auto">
+                <i class="fas fa-info-circle ms-2" title="Sensor Information"></i>
+                <i class="fas fa-cog ms-2" title="Manage Sensors"></i>
+              </div>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="calendar" id="calendar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-microchip icon-animate me-1"></i> Plant Status
+              <div class="ms-auto">
+                <i class="fas fa-info-circle ms-2" title="Sensor Information"></i>
+                <i class="fas fa-cog ms-2" title="Manage Sensors"></i>
+              </div>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img id="plant-status" src="Untitled-design-2023-06-21T100918.jpg" alt="Plant Status"
+                  class="img-fluid rounded-3">
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center">🌿 Current Status</h4>
+                <div class="alert alert-success" role="alert" id="plant-health-alert">
+                  <span id="plant-health">Good</span>
+                  <span id="plant-emoji">🌱</span>
+                </div>
+                <h5>Growth Stage: <span id="growth-stage" class="badge bg-primary">Vegetative</span></h5>
+                <p id="plant-description" class="lead">
+                  The plants are showing healthy growth with vibrant green leaves.
+                  No signs of nutrient deficiencies or pests observed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+
+
+<script src="script.js"></script>
+</body>
